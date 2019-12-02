@@ -11,7 +11,7 @@
           "category": "UCTRONICS ESP32 Boards", 
           "name": "UCTRONICS ESP32 Boards", 
           "url": "https://github.com/UCTRONICS/UCTRONICS_ESP32/raw/master/package/release/UCTRONICS_ESP32.zip", 
-          "checksum": "SHA-256:42AD73AF1CF98FBF8463B4D26795585BD370E10A75E8FDD993A4C65499216E37", 
+          "checksum": "SHA-256:C8D32E3FAC3B9306A21AB064980B3D74379B36ED33C65E8B1F38E060BB7397B7", 
           "help": {
             "online": ""
           }, 
@@ -40,7 +40,7 @@
               "name": "mkspiffs"
             }
           ], 
-          "size": "31291218 "
+          "size": "31291591"
         }
       ], 
       "tools": [
