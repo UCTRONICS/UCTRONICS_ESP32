@@ -1,0 +1,95 @@
+menu.UploadSpeed=Upload Speed
+menu.CPUFreq=CPU Frequency
+menu.FlashFreq=Flash Frequency
+menu.FlashMode=Flash Mode
+menu.FlashSize=Flash Size
+menu.PartitionScheme=Partition Scheme
+menu.DebugLevel=Core Debug Level
+menu.PSRAM=PSRAM
+
+##############################################################
+
+UCTRONICS_UCBOT.name=UCBOT
+
+UCTRONICS_UCBOT.upload.tool=esptool_py
+UCTRONICS_UCBOT.upload.maximum_size=1310720
+UCTRONICS_UCBOT.upload.maximum_data_size=327680
+UCTRONICS_UCBOT.upload.wait_for_upload_port=true
+
+UCTRONICS_UCBOT.serial.disableDTR=true
+UCTRONICS_UCBOT.serial.disableRTS=true
+
+UCTRONICS_UCBOT.build.mcu=esp32
+UCTRONICS_UCBOT.build.core=esp32
+UCTRONICS_UCBOT.build.variant=UCBOT
+UCTRONICS_UCBOT.build.board=UCTRONICS_UCBOT_DEV
+
+UCTRONICS_UCBOT.build.f_cpu=240000000L
+UCTRONICS_UCBOT.build.flash_size=4MB
+UCTRONICS_UCBOT.build.flash_freq=40m
+UCTRONICS_UCBOT.build.flash_mode=dio
+UCTRONICS_UCBOT.build.boot=dio
+UCTRONICS_UCBOT.build.partitions=default
+UCTRONICS_UCBOT.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+
+UCTRONICS_UCBOT.menu.PartitionScheme.default=Default
+UCTRONICS_UCBOT.menu.PartitionScheme.default.build.partitions=default
+UCTRONICS_UCBOT.menu.PartitionScheme.minimal=Minimal (2MB FLASH)
+UCTRONICS_UCBOT.menu.PartitionScheme.minimal.build.partitions=minimal
+UCTRONICS_UCBOT.menu.PartitionScheme.no_ota=No OTA (Large APP)
+UCTRONICS_UCBOT.menu.PartitionScheme.no_ota.build.partitions=no_ota
+UCTRONICS_UCBOT.menu.PartitionScheme.no_ota.upload.maximum_size=2097152
+UCTRONICS_UCBOT.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA)
+UCTRONICS_UCBOT.menu.PartitionScheme.huge_app.build.partitions=huge_app
+UCTRONICS_UCBOT.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
+UCTRONICS_UCBOT.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (Large APPS with OTA)
+UCTRONICS_UCBOT.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
+UCTRONICS_UCBOT.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
+
+UCTRONICS_UCBOT.menu.FlashMode.qio=QIO
+UCTRONICS_UCBOT.menu.FlashMode.qio.build.flash_mode=dio
+UCTRONICS_UCBOT.menu.FlashMode.qio.build.boot=qio
+UCTRONICS_UCBOT.menu.FlashMode.dio=DIO
+UCTRONICS_UCBOT.menu.FlashMode.dio.build.flash_mode=dio
+UCTRONICS_UCBOT.menu.FlashMode.dio.build.boot=dio
+UCTRONICS_UCBOT.menu.FlashMode.qout=QOUT
+UCTRONICS_UCBOT.menu.FlashMode.qout.build.flash_mode=dout
+UCTRONICS_UCBOT.menu.FlashMode.qout.build.boot=qout
+UCTRONICS_UCBOT.menu.FlashMode.dout=DOUT
+UCTRONICS_UCBOT.menu.FlashMode.dout.build.flash_mode=dout
+UCTRONICS_UCBOT.menu.FlashMode.dout.build.boot=dout
+
+UCTRONICS_UCBOT.menu.FlashFreq.80=80MHz
+UCTRONICS_UCBOT.menu.FlashFreq.80.build.flash_freq=80m
+UCTRONICS_UCBOT.menu.FlashFreq.40=40MHz
+UCTRONICS_UCBOT.menu.FlashFreq.40.build.flash_freq=40m
+
+UCTRONICS_UCBOT.menu.UploadSpeed.921600=921600
+UCTRONICS_UCBOT.menu.UploadSpeed.921600.upload.speed=921600
+UCTRONICS_UCBOT.menu.UploadSpeed.115200=115200
+UCTRONICS_UCBOT.menu.UploadSpeed.115200.upload.speed=115200
+UCTRONICS_UCBOT.menu.UploadSpeed.256000.windows=256000
+UCTRONICS_UCBOT.menu.UploadSpeed.256000.upload.speed=256000
+UCTRONICS_UCBOT.menu.UploadSpeed.230400.windows.upload.speed=256000
+UCTRONICS_UCBOT.menu.UploadSpeed.230400=230400
+UCTRONICS_UCBOT.menu.UploadSpeed.230400.upload.speed=230400
+UCTRONICS_UCBOT.menu.UploadSpeed.460800.linux=460800
+UCTRONICS_UCBOT.menu.UploadSpeed.460800.macosx=460800
+UCTRONICS_UCBOT.menu.UploadSpeed.460800.upload.speed=460800
+UCTRONICS_UCBOT.menu.UploadSpeed.512000.windows=512000
+UCTRONICS_UCBOT.menu.UploadSpeed.512000.upload.speed=512000
+
+UCTRONICS_UCBOT.menu.DebugLevel.none=None
+UCTRONICS_UCBOT.menu.DebugLevel.none.build.code_debug=0
+UCTRONICS_UCBOT.menu.DebugLevel.error=Error
+UCTRONICS_UCBOT.menu.DebugLevel.error.build.code_debug=1
+UCTRONICS_UCBOT.menu.DebugLevel.warn=Warn
+UCTRONICS_UCBOT.menu.DebugLevel.warn.build.code_debug=2
+UCTRONICS_UCBOT.menu.DebugLevel.info=Info
+UCTRONICS_UCBOT.menu.DebugLevel.info.build.code_debug=3
+UCTRONICS_UCBOT.menu.DebugLevel.debug=Debug
+UCTRONICS_UCBOT.menu.DebugLevel.debug.build.code_debug=4
+UCTRONICS_UCBOT.menu.DebugLevel.verbose=Verbose
+UCTRONICS_UCBOT.menu.DebugLevel.verbose.build.code_debug=5
+
+
