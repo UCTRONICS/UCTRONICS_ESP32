@@ -10,7 +10,7 @@
         {
           "category": "UCTRONICS ESP32 Boards", 
           "name": "UCTRONICS ESP32 Boards", 
-          "url": "https://github.com/UCTRONICS/UCTRONICS_ESP32/blob/master/package/release/UCTRONICS_ESP32.zip?raw=true", 
+          "url": "https://github.com/UCTRONICS/UCTRONICS_ESP32/raw/master/package/release/UCTRONICS_ESP32.zip", 
           "checksum": "SHA-256:103AD04C9735BBE1F28CA49595E7D613D11F4A4C43ABC286304800FFBBAB1FCD", 
           "help": {
             "online": ""
