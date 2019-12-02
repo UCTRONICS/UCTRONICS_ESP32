@@ -17,9 +17,9 @@ byte wrSensorReg8_8(uint8_t sensor_addr, int regID, int regDat)
     Wire.write(regDat & 0x00FF);
     if (Wire.endTransmission())
     {
-      return 0;
+      return 1;
     }
-  return 1;
+  return 0;
 }
 byte rdSensorReg8_8(uint8_t sensor_addr, uint8_t regID, uint8_t* regDat)
 { 
@@ -28,8 +28,10 @@ byte rdSensorReg8_8(uint8_t sensor_addr, uint8_t regID, uint8_t* regDat)
     Wire.endTransmission();
   
     Wire.requestFrom((sensor_addr), 1);
-    if (Wire.available())
+    if (Wire.available()){
       *regDat = Wire.read();
+      return 0;
+    }
   return 1;
 }typedef struct {
         size_t size; //number of values used for filtering
@@ -279,7 +281,8 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     else {
         res = -1;
     }
-
+    //Serial.println("res = ");
+    //Serial.println(res, DEC);
     if(res){
         return httpd_resp_send_500(req);
     }
@@ -293,6 +296,37 @@ static esp_err_t index_handler(httpd_req_t *req){
     httpd_resp_set_type(req, "text/html");
     httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
     return httpd_resp_send(req, (const char *)req_data, sizeof(req_data)+1);
+}
+
+static esp_err_t version_handler(httpd_req_t *req){
+    static char json_response[128];
+    char * p = json_response;
+    int i;
+    char c1, c2;
+    *p++ = '{';
+    p+=sprintf(p, "\"manufacturer\":\"UCTRONICS\",");
+    p+=sprintf(p, "\"device\":\"UCBOT Rev.C\",");
+    p+=sprintf(p, "\"version\":\"v1.0.0\",");
+
+    p+=sprintf(p, "\"");
+    *p++ = '}';
+    *p++ = 0;
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    return httpd_resp_send(req, json_response, strlen(json_response));
+}
+
+static esp_err_t power_handler(httpd_req_t *req){
+    static char json_response[16];
+    char * p = json_response;
+    uint8_t data;
+    *p++ = '{';
+    p+=sprintf(p, "\"power\":%d",data);
+    *p++ = '}';
+    *p++ = 0;
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    return httpd_resp_send(req, json_response, strlen(json_response));
 }
 
 void startCameraServer(){
@@ -326,6 +360,20 @@ void startCameraServer(){
         .user_ctx  = NULL
     };
 
+   httpd_uri_t version_handler_uri = {
+        .uri       = "/version",
+        .method    = HTTP_GET,
+        .handler   = version_handler,
+        .user_ctx  = NULL
+    };
+
+    httpd_uri_t power_handler_uri = {
+        .uri       = "/power",
+        .method    = HTTP_GET,
+        .handler   = power_handler,
+        .user_ctx  = NULL
+    };
+    
     ra_filter_init(&ra_filter, 20);
     
     Serial.printf("Starting web server on port: '%d'\n", config.server_port);
@@ -333,6 +381,8 @@ void startCameraServer(){
         httpd_register_uri_handler(camera_httpd, &index_uri);
         httpd_register_uri_handler(camera_httpd, &cmd_uri);
         httpd_register_uri_handler(camera_httpd, &capture_uri);
+        httpd_register_uri_handler(camera_httpd, &version_handler_uri);
+        httpd_register_uri_handler(camera_httpd, &power_handler_uri);
     }
 
     config.server_port = 2001;

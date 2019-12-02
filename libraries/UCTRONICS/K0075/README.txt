@@ -1,4 +1,4 @@
-When you connect to the robot car's access point UCBOT_630C, 
+﻿When you connect to the robot car's access point UCBOT_630C, 
 you can control the status of the car by typing the following command in your browser.
 
 (1)View video streams
@@ -11,7 +11,7 @@ http://192.168.4.1/capture
 http://192.168.4.1/control?var=motor_speed&val=0/.../100
 
 (4)Set the motor direction 
-http://192.168.4.1:2001/set?var=motor_direction&val=1/2.../9
+http://192.168.4.1/control?var=motor_direction&val=1/2.../9
 
 (5)Set the motor calibration value
 http://192.168.4.1/control?var=motor_calibration&val=-20/.../20

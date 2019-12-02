@@ -1,17 +1,18 @@
 // UCBOT DEMO
 // Web: http://www.uctronics.com
 // This program is a demo of how to use most of the functions of UCBOT.
-// This demo needs to be used in combination with PC software and UCBOT robot car.
-// It can view video on the web and command the car to enter different modes through the browser,
-// the control command is in the file of README. 
+// There are some differences between this example and the ESP-IDF firmware. 
+// In order to be compatible with the factory firmware as much as possible, WIFI name and version information, battery power and other functions have not been added.
+// It can view video and command the car to enter different modes through the browser or phone app
+// The control command is in the file of README. 
 
 #include "ucbot_camera.h"
 #include <WiFi.h>
 #include "I2C_slave.h"
 #include <Arduino.h>
 
-const char* ap_ssid = "UCBOT_630C"; 
-const char* ap_password = "12345678";
+const char* ap_ssid = "UCBOT_630C"; //set the ap
+const char* ap_password = "12345678"; //set the secret
 
 static uint8_t isr_flag = 0;
 int ret;
